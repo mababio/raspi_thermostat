@@ -1,0 +1,28 @@
+   
+   
+    .control {
+        width: 90px;
+        height: 40px;
+    }
+
+
+div.middle {
+    height: 10em;
+    position: relative }
+div.middle input {
+    width: 90px;
+    height: 40px;
+    margin: 0;
+    background: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+
+
+
+
+
+
+
