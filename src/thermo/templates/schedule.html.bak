@@ -1,0 +1,71 @@
+<form action="{{ url_for('schedule_process') }}" method="post">
+
+<table style="width:100%">
+  <tr>
+<th></style="width:100%">
+   <tr>
+    <th>      </th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wenesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+    </tr>
+  <tr>
+   
+   <tr>
+    <th></style="width:100%">
+   <tr>
+    <th>Wake</th>
+    <div class="content-wrapper">
+	<div class="text-wrapper">
+                <h1>Thermostat Schedule</h1>
+            </div>
+     </div>	
+    <th><input type="time" id="wake_mon_time" name="wake_mon_time"  value= {{wake_mon_time}}>Temp:<input id="wake_mon_temp" name="wake_mon_temp"  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{wake_tues_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{wake_wed_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{wake_thurs_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{wake_fri_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{wake_sat_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{day_sun_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    </tr>
+  <tr>
+    
+    <th>Day</th>
+	<th><input type="time" value= {{day_mon_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{day_tues_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{day_wed_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{day_thurs_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{day_fri_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{day_sat_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{day_sun_time}}>Temp:<input  min="65" max="85" type="number"></th>
+  </tr>
+  <tr>
+    
+    <th>Evening</th>
+ <th><input type="time" value= {{evening_mon_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{evening_tues_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{evening_wed_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{evening_thurs_time}} value="13:30">Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{evening_fri_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{evening_sat_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{evening_sun_time}}>Temp:<input  min="65" max="85" type="number"></th>
+  </tr>
+ <tr>
+    
+    <th>Sleep</th>
+	<th><input type="time" value= {{sleep_mon_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{sleep_tues_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{sleep_wed_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{sleep_thurs_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{sleep_fri_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{sleep_sat_time}}>Temp:<input  min="65" max="85" type="number"></th>
+    <th><input type="time" value= {{sleep_sun_time}}>Temp:<input  min="65" max="85" type="number"></th>
+  </tr>
+
+  </table>
+<input type="submit">
+</form>
