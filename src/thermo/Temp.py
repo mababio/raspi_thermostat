@@ -28,7 +28,7 @@ def get_temp():
 
 
 def is_valid_val(temp):
-    if temp >= 65 or temp <= 85:
+    if 65 <= temp <= 85:
         return True
     else:
         return False
