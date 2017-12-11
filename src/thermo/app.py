@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 import json
 import os
 import ScheduleContainer
@@ -54,7 +54,8 @@ def schedule_process():
     time = request.form.get('time')
     temp = request.form.get('temp')
     schedule_queue.append(Schedule.ThermoSchedule(dow, time, temp))
-    return render_template('index.html')
+    current_temp = Temp.get_temp()
+    return render_template('index_b.html', temp=current_temp)
 
 
 if __name__ == "__main__":

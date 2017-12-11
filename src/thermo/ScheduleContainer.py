@@ -41,9 +41,10 @@ class ScheduleContainer(object):
                 print('temp---> ' + str(schedule_obj.temp))
                 job = self.scheduler.every()
                 job.start_day=str(schedule_obj.day)
-                job.unit='weeks'
+                job.unit = 'weeks'
                 job.at(str(schedule_obj.time)).do(self.task(schedule_obj.temp))
                 print('schedule made into job')
+                schedule_obj.save()
                 self.schedule_container.task_done()
             lock.release()
                 # time.sleep(5)
