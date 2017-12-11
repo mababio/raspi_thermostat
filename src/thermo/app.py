@@ -29,7 +29,7 @@ def set_temp_file():
 @app.route('/')
 def index():
     temp = Temp.get_temp()
-    return render_template('index.html', temp=temp)
+    return render_template('index_b.html', temp=temp)
 
 
 @app.route('/handle', methods=['GET', 'POST'])

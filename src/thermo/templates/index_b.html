@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_b.css') }}">
+    <script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+    <script src="{{ url_for('static', filename='js/cod.js') }}"></script>
+</head>
+
+<div class="thermostat">
+  <div class="bar">
+    <div class="inner_bar"></div>
+    <div class='hold left'>
+      <div class='fill fill1'></div>
+    </div>
+    <div class='hold right'>
+      <div class='fill fill2'></div>
+    </div>
+    <span>Heating</span>
+  </div>
+  <div class="center">
+    <span class="arrow minus"><i class="material-icons">keyboard_arrow_left</i></span>
+    <span class="arrow plus"><i class="material-icons">keyboard_arrow_right</i></span>
+    <div class="small">
+      <span class="heat">65</span>
+    </div>
+  </div>
+</div>
+</html>

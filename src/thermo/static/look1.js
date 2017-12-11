@@ -1,33 +1,35 @@
-$(document).ready(function() {
-    $('#up').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT +'/handle', {
-        control: $('#up').text()
-      }, function(data) {
-        $("h1").text(data.result);
-      });
-      return false;
-    }
-    );
 
-     $('#down').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT + '/handle', {
-        control: $('#down').text()
-      }, function(data) {
-        $("h1").text(data.result);
-      });
-      return false;
-    }
-    );
+$(function() {
+var gradi = 65;
+var max = 85;
+var min = 65;
 
-    $('#submit_time').bind('click', function() {
-      $.getJSON(window.location.host+ '/setsch', {
-        time: $('#temp_time').val(),
-        temp: $('#temp_val').val()
-      }, function(data) {
-        alert("temp set!!!!");
-      });
-      return false;
-    }
-    );
+function updateGr(){
+  $(".heat").text("" + gradi);
+  $(".fill").css("animation", "none");
 }
-);
+
+
+
+ (".minus").mousedown(function() {
+     alert("Hello! I am an alert box!!");
+      $.getJSON($SCRIPT_ROOT + '/handle', {
+        control: $('.heat').text()
+      }, function(data) {
+        $(".heat").text(data.result);
+      });
+      return false;
+    }
+    );
+
+
+
+$(".plus").mousedown(function(){
+  if(gradi < max){
+    gradi++;
+    updateGr();
+    $(".fill1").css("transform", "rotate("+ (gradi - 65) * 8 +"deg)").css("transition-delay", "0s");
+  }
+});
+});
+

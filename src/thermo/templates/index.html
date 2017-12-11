@@ -3,43 +3,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
-<script type=text/javascript>
-$(document).ready(function() {
-    $('#up').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT +'/handle', {
-        control: $('#up').text()
-      }, function(data) {
-        $("h1").text(data.result);
-      });
-      return false;
-    }
-    );
-
-     $('#down').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT + '/handle', {
-        control: $('#down').text()
-      }, function(data) {
-        $("h1").text(data.result);
-      });
-      return false;
-    }
-    );
-
-    $('#submit_time').bind('click', function() {
-      $.getJSON(window.location.host+ '/setsch', {
-        time: $('#temp_time').val(),
-        temp: $('#temp_val').val()
-      }, function(data) {
-        alert("temp set!!!!");
-      });
-      return false;
-    }
-    );
-}
-);
-
-</script>
-
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <center>
 <label for="temp-sch">set temp time: </label>
