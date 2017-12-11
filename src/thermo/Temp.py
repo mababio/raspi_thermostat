@@ -28,14 +28,19 @@ def get_temp():
 
 
 def is_valid_val(temp):
-    if 65 <= temp <= 85:
+    if temp >= 65 or temp <= 85:
         return True
     else:
         return False
 
 
 def main():
-    print(is_valid_val(60))
+
+        parser = argparse.ArgumentParser()
+        parser.add_argument("temp", help=" Set temp", type=int)
+        # args = parser.parse_args()
+        # val  = change_temp(int(args.temp))
+        # print(val)
 
 
 if __name__ == "__main__":
