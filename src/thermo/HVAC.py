@@ -5,53 +5,63 @@ import re
 import Temp as Desire
 from threading import Thread
 from threading import Lock
+import os
 
 
-@singleton
+
+
+#@singleton
 class HVAC(object):
 
     # file_path file_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo', 'temp.json')
 
     sensitivity = 2
-    ac = AirConditioner()
-    furnace = Furnace()
+    ac = AirConditioner.AirConditioner()
+    furnace = Furnace.Furnace()
 
-    def __init__(self,sensor_file_path):
+    def __init__(self, sensor_file_path):
         self.sensor_file_path = sensor_file_path
-        worker = Thread(target=self.work)
+        worker = Thread(target=self.task)
         worker.start()
 
-    @classmethod
-    def extract_temp(cls,file_data):
+    def extract_temp(self, file_data):
         p = re.compile('[0-9]{2}')
         temp = p.findall(file_data)[0]
         return temp
 
-    @classmethod
-    def get_sensor_temp(cls,file_path):
+    def get_sensor_temp(self, file_path):
         # return sensor_temp
-        with open(file_path) as file:
-            file_data = file.read()
-            sensor_temp = cls.extract_temp(file_data)
-        return sensor_temp
+        try:
+            with open(file_path) as file:
+                file_data = file.read()
+                sensor_temp = self.extract_temp(file_data)
+        except FileExistsError:
+            print('file in use!!!!!')
+            self.get_sensor_temp(self.sensor_file_path)
+        return int(sensor_temp)
 
-    @staticmethod
-    def task(cls):
+    def task(self):
         lock = Lock()
         while True:
             lock.acquire()
-            if (Desire.get_temp() + HVAC.sensitivity) > cls.get_sensor_temp():
+            if (Desire.get_temp() + HVAC.sensitivity) > self.get_sensor_temp(self.sensor_file_path ):
                 HVAC.furnace.on()
                 HVAC.ac.off()
-            elif (Desire.get_temp() + HVAC.sensitivity) < cls.get_sensor_temp():
-                HVAC.ac.on
+            elif (Desire.get_temp() + HVAC.sensitivity) < self.get_sensor_temp(self.sensor_file_path ):
+                HVAC.ac.on()
                 HVAC.furnace.off()
-            elif (Desire.get_temp() + HVAC.sensitivity) == cls.get_sensor_temp():
+            elif (Desire.get_temp() + HVAC.sensitivity) == self.get_sensor_temp(self.sensor_file_path ):
                 HVAC.furnace.off()
                 HVAC.ac.off()
             else:
                 print('forgot about this corner case')
             lock.release()
+
+
+if __name__ == '__main__':
+    sensor_file_pat = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'sensor.txt')
+
+    HVAC(sensor_file_pat)
 
 
 

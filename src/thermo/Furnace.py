@@ -1,20 +1,22 @@
-from subprocess import call
+from subprocess import Popen
+import subprocess
 
 from singleton_decorator import singleton
+import os
 
 
 @singleton
 class Furnace(object):
     def __init__(self):
-        self.furnace_script_path = ''
+        self.furnace_script_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'fur.sh')
         pass
 
     def on(self):
         # turn furnace on
-        call(self.furnace_script_path, '1')
-        pass
+        cmd = self.furnace_script_path + ' 1'
+        Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
     def off(self):
         # turn furnace off
-        call(self.furnace_script_path, '0')
-        pass
+        cmd = self.furnace_script_path + ' 0'
+        Popen(cmd, stdout=subprocess.PIPE, shell=True)
