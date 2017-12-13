@@ -8,15 +8,21 @@ import HVAC
 
 app = Flask(__name__)
 
-temp_dir = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo')  # os.path.join(os.sep,'data','thermo')
-temp_file = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo','temp.json')  # os.path.join(os.sep,'data','thermo','temp.json')
+temp_dir = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo')
+temp_file = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo','temp.json')
+sensor_file_pat = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'sensor.txt')
+furnace_script_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'fur.sh')
+air_conditioner_script_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'ac.sh')
+desired_temp_file_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo', 'temp.json')
+
 schedule_queue = ScheduleContainer.ScheduleContainer()
+Temp_instance = Temp.Temp(desired_temp_file_path)
 
 
 def init():
+
     set_temp_file()
-    sensor_file_pat = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'sensor.txt')
-    HVAC.HVAC(sensor_file_pat)
+    HVAC.HVAC(sensor_file_pat, furnace_script_path, air_conditioner_script_path, Temp_instance)
 
 
 def set_temp_file():
@@ -31,7 +37,7 @@ def set_temp_file():
 
 @app.route('/')
 def index():
-    temp = Temp.get_temp()
+    temp = Temp_instance.get_temp()
     return render_template('index_b.html', temp=temp)
 
 
@@ -39,11 +45,11 @@ def index():
 def handle():
     if request.args.get('control', 0, type=str) == 'UP':
         print("UP ^^^^^^")
-        Temp.increment_temp(1)
+        Temp_instance.increment_temp(1)
     if request.args.get('control', 0, type=str) == 'DOWN':
         print("DOWN ^^^^^^^")
-        Temp.increment_temp(-1)
-    return jsonify(result=Temp.get_temp())
+        Temp_instance.increment_temp(-1)
+    return jsonify(result=Temp_instance.get_temp())
 
 
 @app.route('/schedule', methods=['GET', 'POST'])
@@ -57,7 +63,7 @@ def schedule_process():
     time = request.form.get('time')
     temp = request.form.get('temp')
     schedule_queue.append(Schedule.ThermoSchedule(dow, time, temp))
-    current_temp = Temp.get_temp()
+    current_temp = Temp_instance.get_temp()
     return render_template('index_b.html', temp=current_temp)
 
 

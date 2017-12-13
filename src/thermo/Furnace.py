@@ -7,8 +7,9 @@ import os
 
 @singleton
 class Furnace(object):
-    def __init__(self):
-        self.furnace_script_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'fur.sh')
+    def __init__(self, furnace_script_path=''):
+        self.furnace_script_path =  furnace_script_path
+        # os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'fur.sh')
         pass
 
     def on(self):

@@ -8,8 +8,9 @@ import subprocess
 
 @singleton
 class AirConditioner(object):
-    def __init__(self):
-        self.air_conditioner_script_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'ac.sh')
+    def __init__(self, air_conditioner_script_path=''):
+        self.air_conditioner_script_path = air_conditioner_script_path
+        # os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'ac.sh')
         pass
 
     def on(self):
