@@ -8,9 +8,7 @@ from threading import Lock
 import os
 
 
-
-
-#@singleton
+@singleton
 class HVAC(object):
 
     # file_path file_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo', 'temp.json')
@@ -44,13 +42,13 @@ class HVAC(object):
         lock = Lock()
         while True:
             lock.acquire()
-            if (Desire.get_temp() + HVAC.sensitivity) > self.get_sensor_temp(self.sensor_file_path ):
+            if (Desire.get_temp() + HVAC.sensitivity) > self.get_sensor_temp(self.sensor_file_path):
                 HVAC.furnace.on()
                 HVAC.ac.off()
-            elif (Desire.get_temp() + HVAC.sensitivity) < self.get_sensor_temp(self.sensor_file_path ):
+            elif (Desire.get_temp() + HVAC.sensitivity) < self.get_sensor_temp(self.sensor_file_path):
                 HVAC.ac.on()
                 HVAC.furnace.off()
-            elif (Desire.get_temp() + HVAC.sensitivity) == self.get_sensor_temp(self.sensor_file_path ):
+            elif (Desire.get_temp() + HVAC.sensitivity) == self.get_sensor_temp(self.sensor_file_path):
                 HVAC.furnace.off()
                 HVAC.ac.off()
             else:

@@ -24,7 +24,7 @@ def get_temp():
     file_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo', 'temp.json')
     with open(file_path, 'r') as jsonfile:
         data = json.load(jsonfile)
-    return data['temp']
+    return int(data['temp'])
 
 
 def is_valid_val(temp):
