@@ -4,6 +4,7 @@ import os
 import ScheduleContainer
 import Schedule
 import Temp as Temp
+import HVAC
 
 app = Flask(__name__)
 
@@ -14,6 +15,8 @@ schedule_queue = ScheduleContainer.ScheduleContainer()
 
 def init():
     set_temp_file()
+    sensor_file_pat = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'sensor.txt')
+    HVAC.HVAC(sensor_file_pat)
 
 
 def set_temp_file():

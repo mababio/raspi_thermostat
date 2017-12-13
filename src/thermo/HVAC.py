@@ -8,7 +8,7 @@ from threading import Lock
 import os
 
 
-@singleton
+#@singleton
 class HVAC(object):
 
     # file_path file_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo', 'temp.json')
