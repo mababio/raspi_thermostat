@@ -14,18 +14,17 @@ class AirConditioner(object):
         pass
 
     def on(self):
+        print('ac turn on')
         # turn AirConditioner on
-        cmd = self.air_conditioner_script_path + ' 1'
-        print(cmd)
-        Popen(cmd, stdout=subprocess.PIPE, shell=True)
+        # cmd = self.air_conditioner_script_path + ' 1'
+        # print(cmd)
+        # Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
     def off(self):
+        print('ac turn off')
         # turn AirConditioner off
-        cmd = self.air_conditioner_script_path + ' 0'
-        Popen(cmd, stdout=subprocess.PIPE, shell=True)
-
-
-
+        # cmd = self.air_conditioner_script_path + ' 0'
+        # Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
 
 if __name__ == '__main__':

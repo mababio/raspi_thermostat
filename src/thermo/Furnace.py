@@ -14,10 +14,12 @@ class Furnace(object):
 
     def on(self):
         # turn furnace on
-        cmd = self.furnace_script_path + ' 1'
-        Popen(cmd, stdout=subprocess.PIPE, shell=True)
+        print('furnace turn on')
+        # cmd = self.furnace_script_path + ' 1'
+        # Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
     def off(self):
+        print('furnace turn off')
         # turn furnace off
-        cmd = self.furnace_script_path + ' 0'
-        Popen(cmd, stdout=subprocess.PIPE, shell=True)
+        # cmd = self.furnace_script_path + ' 0'
+        # Popen(cmd, stdout=subprocess.PIPE, shell=True)

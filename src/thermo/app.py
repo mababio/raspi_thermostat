@@ -8,12 +8,12 @@ import HVAC
 
 app = Flask(__name__)
 
-temp_dir = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo')
-temp_file = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo','temp.json')
+temp_dir = os.path.join('data', 'thermo')
+desired_temp_file_path = os.path.join('data', 'thermo','temp.json')
 sensor_file_pat = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'sensor.txt')
-furnace_script_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'fur.sh')
-air_conditioner_script_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'ac.sh')
-desired_temp_file_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo', 'temp.json')
+furnace_script_path = os.path.join('data','script', 'fur.sh')
+air_conditioner_script_path = os.path.join('data','script', 'ac.sh')
+
 
 schedule_queue = ScheduleContainer.ScheduleContainer()
 Temp_instance = Temp.Temp(desired_temp_file_path)
@@ -31,7 +31,7 @@ def set_temp_file():
     json_data = json.loads(data)
     if not os.path.exists(temp_dir):
         os.makedirs(temp_dir)
-    with open(temp_file, 'w+') as outfile:
+    with open(desired_temp_file_path, 'w+') as outfile:
         json.dump(json_data, outfile)
 
 
