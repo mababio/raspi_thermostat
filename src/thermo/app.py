@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 temp_dir = os.path.join('data', 'thermo')
 desired_temp_file_path = os.path.join('data', 'thermo','temp.json')
-sensor_file_pat = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'sensor.txt')
+sensor_file_pat = os.path.join('data', 'thermo','sensor.txt')
 furnace_script_path = os.path.join('data','script', 'fur.sh')
 air_conditioner_script_path = os.path.join('data','script', 'ac.sh')
 
@@ -69,4 +69,4 @@ def schedule_process():
 
 if __name__ == "__main__":
     init()
-    app.run(threaded=True)
+    app.run(threaded=True,host='0.0.0.0', port=8080)
