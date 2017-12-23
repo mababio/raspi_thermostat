@@ -11,7 +11,7 @@ app = Flask(__name__)
 temp_dir = os.path.join('data', 'thermo')
 desired_temp_file_path = os.path.join('data', 'thermo','temp.json')
 sensor_file_pat = os.path.join('data', 'thermo','sensor.txt')
-furnace_script_path = os.path.join('data','script', 'fur.sh')
+furnace_script_path = os.path.join('data','script', 'gpio.sh')
 air_conditioner_script_path = os.path.join('data','script', 'ac.sh')
 
 
