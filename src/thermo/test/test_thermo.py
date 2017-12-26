@@ -10,11 +10,6 @@ class TestClass:
     client = App.app.test_client()
     client.testing = 'True'
 
-    def test_env_check(self):
-        assert os.path.isfile('data/thermo/temp.json')
-        print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&' + str(oct(os.stat("data/thermo/temp.json")[ST_MODE])))
-        # assert os.path.isfile('data/thermo/sensor.txt')
-
     def test_routes(self):
 
         assert TestClass.client.get('/').status_code == 200
@@ -24,5 +19,10 @@ class TestClass:
 
     def test_clean_up(self):
         App.kill_threads()
+        
+    def test_env_check(self):
+        assert os.path.isfile('data/thermo/temp.json')
+        print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&' + str(oct(os.stat("data/thermo/temp.json")[ST_MODE])))
+         assert os.path.isfile('data/thermo/sensor.txt')
 
 
