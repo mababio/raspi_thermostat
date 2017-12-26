@@ -5,8 +5,8 @@ import os
 
 
 class TestClass:
-    app.init()
-    client = app.app.test_client()
+    App.init()
+    client = App.app.test_client()
     client.testing = 'True'
 
     def test_env_check(self):
@@ -21,6 +21,6 @@ class TestClass:
         assert TestClass.client.get('/schedule_process').status_code == 200
 
     def test_clean_up(self):
-        app.kill_threads()
+        App.kill_threads()
 
 
