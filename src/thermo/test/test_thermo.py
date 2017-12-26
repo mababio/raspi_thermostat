@@ -10,8 +10,8 @@ class TestClass:
     client.testing = 'True'
 
     def test_env_check(self):
-        assert os.path.isfile('../data/thermo/temp.json')
-        assert os.path.isfile('../data/thermo/sensor.txt')
+        assert os.path.isfile('data/thermo/temp.json')
+        assert os.path.isfile('data/thermo/sensor.txt')
 
     def test_routes(self):
 
