@@ -1,6 +1,7 @@
 # raspi_thermostat
 Web based thermostat running on a raspberry pi
-https://travis-ci.org/mababio/raspi_thermostat.svg?branch=master
+[![Build Status](https://travis-ci.org/mababio/raspi_thermostat.svg?branch=master)]
+
 
 Building a Thermostat web app in Python Using flask!
 
