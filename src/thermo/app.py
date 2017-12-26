@@ -17,12 +17,19 @@ air_conditioner_script_path = os.path.join('data','script', 'ac.sh')
 
 schedule_queue = ScheduleContainer.ScheduleContainer()
 Temp_instance = Temp.Temp(desired_temp_file_path)
+hvac=HVAC.HVAC(sensor_file_pat, furnace_script_path, air_conditioner_script_path, Temp_instance)
 
 
-def init():
+def kill_threads():
+    hvac._run = False
+    schedule_queue._run =  False
 
+
+def init():\
     set_temp_file()
-    HVAC.HVAC(sensor_file_pat, furnace_script_path, air_conditioner_script_path, Temp_instance)
+
+
+
 
 
 def set_temp_file():

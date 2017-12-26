@@ -18,6 +18,7 @@ class HVAC(object):
     furnace = Furnace.Furnace()
 
     def __init__(self, sensor_file_path, furnace_script_path, air_conditioner_script_path,temp_obj):
+        self._run = True
         self.sensor_file_path = sensor_file_path
         HVAC.furnace.furnace_script_path = furnace_script_path
         HVAC.ac.air_conditioner_script_path= air_conditioner_script_path
@@ -43,7 +44,7 @@ class HVAC(object):
 
     def task(self):
         lock = Lock()
-        while True:
+        while self._run:
             lock.acquire()
             if (self.Desire.get_temp() + HVAC.sensitivity) > self.get_sensor_temp(self.sensor_file_path):
                 HVAC.furnace.on()

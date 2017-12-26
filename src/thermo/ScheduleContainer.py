@@ -14,6 +14,7 @@ class ScheduleContainer(object):
     def __init__(self):
         self.schedule_container = JoinableQueue(maxsize=0)
         self.scheduler = schedule
+        self._run = True
         worker = Thread(target=self.work)
         # worker.setDaemon(True)
         worker.start()
@@ -30,7 +31,7 @@ class ScheduleContainer(object):
     def work(self):
         lock = Lock()
 
-        while True:
+        while self._run:
             lock.acquire()
             if not self.schedule_container.empty():
                 print('schedule in the queue .....')
