@@ -2,6 +2,7 @@ import sys
 sys.path.append('../')
 import App
 import os
+from stat import *
 
 
 class TestClass:
@@ -11,6 +12,7 @@ class TestClass:
 
     def test_env_check(self):
         assert os.path.isfile('data/thermo/temp.json')
+        print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&' + str(oct(os.stat("data/thermo/temp.json")[ST_MODE])))
         # assert os.path.isfile('data/thermo/sensor.txt')
 
     def test_routes(self):
