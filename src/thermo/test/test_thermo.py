@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../')
-import app
+import App
 import os
 
 
