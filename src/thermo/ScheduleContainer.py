@@ -7,6 +7,16 @@ from threading import Thread
 from threading import Lock
 from singleton_decorator import singleton
 
+'''
+author: Michael
+email: michaelkwasi@gmail.com
+website: ababio.me
+
+purpose: ScheduleContainer class contains thermostat schedules 
+that get appended to a Queue and activated using a continuous loop mechanism
+
+'''
+
 
 @singleton
 class ScheduleContainer(object):
@@ -16,7 +26,6 @@ class ScheduleContainer(object):
         self.scheduler = schedule
         self._run = True
         worker = Thread(target=self.work)
-        # worker.setDaemon(True)
         worker.start()
 
     def append(self, request_form):
@@ -34,12 +43,7 @@ class ScheduleContainer(object):
         while self._run:
             lock.acquire()
             if not self.schedule_container.empty():
-                print('schedule in the queue .....')
                 schedule_obj = self.schedule_container.get()
-                print('type of: ---> ' + str(type(schedule_obj)))
-                print('dow---> ' + schedule_obj.day)
-                print('time---> ' + schedule_obj.time)
-                print('temp---> ' + str(schedule_obj.temp))
                 job = self.scheduler.every()
                 job.start_day=str(schedule_obj.day)
                 job.unit = 'weeks'
@@ -48,13 +52,6 @@ class ScheduleContainer(object):
                 schedule_obj.save()
                 self.schedule_container.task_done()
             lock.release()
-                # time.sleep(5)
             schedule.run_pending()
-            print('checking ************************')
             time.sleep(1)
 
-
-if __name__ == '__main__':
-    obj = ScheduleContainer()
-    obj.append(Schedule.ThermoSchedule('thursday', '22:34', 8))
-    # obj.append(Schedule.Thermo_Schedule('thursday', '12:56', 83))

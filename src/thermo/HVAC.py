@@ -8,10 +8,19 @@ from threading import Lock
 import os
 
 
-#@singleton
-class HVAC(object):
+'''
+author: Michael
+email: michaelkwasi@gmail.com
+website: ababio.me
 
-    # file_path file_path = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo', 'temp.json')
+purpose: HVAC is a model of the real life HVAC. It is responsible for constantly checking if the furnace is needed or
+the ac is needed
+by comparing the desire temp and the actual temp 
+
+'''
+
+
+class HVAC(object):
 
     sensitivity = 2
     ac = AirConditioner.AirConditioner()
@@ -32,7 +41,6 @@ class HVAC(object):
         return temp
 
     def get_sensor_temp(self, file_path):
-        # return sensor_temp
         try:
             with open(file_path) as file:
                 file_data = file.read()
@@ -60,10 +68,6 @@ class HVAC(object):
             lock.release()
 
 
-if __name__ == '__main__':
-    sensor_file_pat = os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'sensor.txt')
-
-    HVAC(sensor_file_pat)
 
 
 

@@ -2,12 +2,19 @@ import json
 import argparse
 import os
 
+'''
+author: Michael
+email: michaelkwasi@gmail.com
+website: ababio.me
+
+purpose: Temp class manipulate the desire temperature
+'''
+
 
 class Temp(object):
 
     def __init__(self, desired_temp_file_path=''):
         self.desired_temp_file_path = desired_temp_file_path
-        # os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'data', 'thermo', 'temp.json')
 
     def increment_temp(self, amount):
         new_temp = self.get_temp() + amount
@@ -34,14 +41,3 @@ class Temp(object):
         else:
             return False
 
-    def main(self):
-        parser = argparse.ArgumentParser()
-        parser.add_argument("temp", help=" Set temp", type=int)
-        # args = parser.parse_args()
-        # val  = change_temp(int(args.temp))
-        # print(val)
-
-
-if __name__ == "__main__":
-    # main()
-    pass
