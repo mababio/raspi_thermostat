@@ -4,7 +4,14 @@ from singleton_decorator import singleton
 import os
 from subprocess import Popen
 import subprocess
+'''
+author: Michael
+email: michaelkwasi@gmail.com
+website: ababio.me
 
+purpose: The Air Conditioner object is a representation of real world Furnace. 
+
+'''
 
 @singleton
 class AirConditioner(object):

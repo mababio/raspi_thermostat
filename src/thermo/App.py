@@ -6,6 +6,16 @@ import Schedule
 import Temp as Temp
 import HVAC
 
+'''
+author: Michael
+email: michaelkwasi@gmail.com
+website: ababio.me
+
+purpose: This is the main method the thermostat flask application. All variables that need to be set are declared here
+And also routes are configured here as well
+
+'''
+
 app = Flask(__name__)
 
 temp_dir = os.path.join('data', 'thermo')

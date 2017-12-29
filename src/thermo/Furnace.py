@@ -4,6 +4,15 @@ import subprocess
 from singleton_decorator import singleton
 import os
 
+'''
+author: Michael
+email: michaelkwasi@gmail.com
+website: ababio.me
+
+purpose: The Furnace object is a representation of real world Furnace. 
+
+'''
+
 
 @singleton
 class Furnace(object):
