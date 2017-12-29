@@ -1,5 +1,6 @@
 from subprocess import Popen
 import subprocess
+import AControllable
 
 from singleton_decorator import singleton
 import os
@@ -15,7 +16,7 @@ purpose: The Furnace object is a representation of real world Furnace.
 
 
 @singleton
-class Furnace(object):
+class Furnace(AControllable):
     def __init__(self, furnace_script_path=''):
         self.furnace_script_path = furnace_script_path
         # os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'fur.sh')

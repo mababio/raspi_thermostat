@@ -4,6 +4,7 @@ from singleton_decorator import singleton
 import os
 from subprocess import Popen
 import subprocess
+import AControllable
 '''
 author: Michael
 email: michaelkwasi@gmail.com
@@ -14,7 +15,7 @@ purpose: The Air Conditioner object is a representation of real world Furnace.
 '''
 
 @singleton
-class AirConditioner(object):
+class AirConditioner(AControllable):
     def __init__(self, air_conditioner_script_path=''):
         self.air_conditioner_script_path = air_conditioner_script_path
         # os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'ac.sh')
