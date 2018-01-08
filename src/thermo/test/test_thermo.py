@@ -1,8 +1,7 @@
 import sys
 sys.path.append('../')
-import App
+from config import App
 import os
-from stat import *
 
 
 class TestClass:

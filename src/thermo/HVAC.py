@@ -1,12 +1,10 @@
-from singleton_decorator import singleton
 import Furnace
 import AirConditioner
 import re
-# import Temp as Desire
 from threading import Thread
 from threading import Lock
-import os
-
+import Temp as Temp
+from config import config
 
 '''
 author: Michael
@@ -26,12 +24,8 @@ class HVAC(object):
     ac = AirConditioner.AirConditioner()
     furnace = Furnace.Furnace()
 
-    def __init__(self, sensor_file_path, furnace_script_path, air_conditioner_script_path,temp_obj):
+    def __init__(self):
         self._run = True
-        self.sensor_file_path = sensor_file_path
-        HVAC.furnace.furnace_script_path = furnace_script_path
-        HVAC.ac.air_conditioner_script_path= air_conditioner_script_path
-        self.Desire = temp_obj
         worker = Thread(target=self.task)
         worker.start()
 
@@ -40,32 +34,38 @@ class HVAC(object):
         temp = p.findall(file_data)[0]
         return temp
 
-    def get_sensor_temp(self, file_path):
+    def get_sensor_temp(self):
         try:
-            with open(file_path) as file:
+            with open(config.sensor_path) as file:
                 file_data = file.read()
                 sensor_temp = self.extract_temp(file_data)
         except FileExistsError:
             print('file in use!!!!!')
-            self.get_sensor_temp(self.sensor_file_path)
+            self.get_sensor_temp()
         return int(sensor_temp)
 
     def task(self):
         lock = Lock()
         while self._run:
             lock.acquire()
-            if (self.Desire.get_temp() + HVAC.sensitivity) > self.get_sensor_temp(self.sensor_file_path):
+            if (Temp.get_temp() + HVAC.sensitivity) > self.get_sensor_temp():
                 HVAC.furnace.on()
                 HVAC.ac.off()
-            elif (self.Desire.get_temp() + HVAC.sensitivity) < self.get_sensor_temp(self.sensor_file_path):
+            elif (Temp.get_temp() + HVAC.sensitivity) < self.get_sensor_temp():
                 HVAC.ac.on()
                 HVAC.furnace.off()
-            elif (self.Desire.get_temp() + HVAC.sensitivity) == self.get_sensor_temp(self.sensor_file_path):
+            elif (Temp.get_temp() + HVAC.sensitivity) == self.get_sensor_temp():
                 HVAC.furnace.off()
                 HVAC.ac.off()
             else:
                 print('forgot about this corner case')
             lock.release()
+
+
+if __name__ == "__main__":
+
+    obj = HVAC()
+
 
 
 

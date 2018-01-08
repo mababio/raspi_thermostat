@@ -1,4 +1,3 @@
-import Schedule
 import schedule
 import time
 import Temp as t
