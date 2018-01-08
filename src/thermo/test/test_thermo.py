@@ -1,6 +1,8 @@
 import sys
-sys.path.append('../')
-from config import App
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__))+'/..')
+import App
 import os
 
 
