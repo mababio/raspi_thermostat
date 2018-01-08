@@ -4,6 +4,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__))+'/..')
 import App
 import os
+from config import  config
 
 
 class TestClass:
@@ -22,7 +23,7 @@ class TestClass:
         App.kill_threads()
         
     def test_env_check(self):
-        assert os.path.isfile('data/thermo/temp.json')
+        assert os.path.isfile(config.desired_temp_path)
         # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&' + str(oct(os.stat("data/thermo/temp.json")[ST_MODE])))
         # assert os.path.isfile('data/thermo/sensor.txt')
 
