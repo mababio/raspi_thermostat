@@ -10,6 +10,11 @@ Hardware:
 2. temperature sensor
 3. Relay module
 
+Software:
+1. Python
+2. Flask
+3.Open source front-end - https://codepen.io/simoberny/pen/wrGoZZ
+
 
 
 Installation procedure:
