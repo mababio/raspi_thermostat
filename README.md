@@ -13,7 +13,7 @@ Hardware:
 Software:
 1. Python
 2. Flask
-3.Open source front-end - https://codepen.io/simoberny/pen/wrGoZZ
+3. Open source front-end - https://codepen.io/simoberny/pen/wrGoZZ
 
 
 
