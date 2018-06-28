@@ -1,9 +1,3 @@
-from config import config
-import HVAC
-import Schedule
-from flask import Flask, render_template, request, jsonify
-import ScheduleContainer
-import Temp
 '''
 author: Michael
 email: michaelkwasi@gmail.com
@@ -12,6 +6,14 @@ website: ababio.me
 purpose: This is the main method the thermostat flask application. All variables that need to be set are declared here
 And also routes are configured here as well
 '''
+
+
+from config import config
+import HVAC
+import Schedule
+from flask import Flask, render_template, request, jsonify
+import ScheduleContainer
+import Temp
 
 app = Flask(__name__)
 
