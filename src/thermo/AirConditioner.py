@@ -1,6 +1,4 @@
 from singleton_decorator import singleton
-import AControllable
-import abc
 '''
 author: Michael
 email: michaelkwasi@gmail.com
@@ -11,7 +9,7 @@ purpose: The Air Conditioner object is a representation of real world Furnace.
 '''
 
 @singleton
-class AirConditioner(AControllable.AControllable):
+class AirConditioner():
     def __init__(self, air_conditioner_script_path=''):
         self.air_conditioner_script_path = air_conditioner_script_path
         # os.path.join(os.sep, 'Users', 'mababio', 'Desktop', 'ac.sh')
