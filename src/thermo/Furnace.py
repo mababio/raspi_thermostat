@@ -1,7 +1,3 @@
-import AControllable
-
-from singleton_decorator import singleton
-from config import  config
 '''
 author: Michael
 email: michaelkwasi@gmail.com
@@ -11,9 +7,12 @@ purpose: The Furnace object is a representation of real world Furnace.
 
 '''
 
+from singleton_decorator import singleton
+from config import  config
+
 
 @singleton
-class Furnace(AControllable.AControllable):
+class Furnace():
 
     def on(self):
         # turn furnace on
