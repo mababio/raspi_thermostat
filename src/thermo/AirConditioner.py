@@ -1,4 +1,3 @@
-from singleton_decorator import singleton
 '''
 author: Michael
 email: michaelkwasi@gmail.com
@@ -7,6 +6,8 @@ website: ababio.me
 purpose: The Air Conditioner object is a representation of real world Furnace. 
 
 '''
+
+from singleton_decorator import singleton
 
 @singleton
 class AirConditioner():
