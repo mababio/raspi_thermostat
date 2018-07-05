@@ -23,7 +23,9 @@ def increment_temp( amount, funt):
 
 
 def change_temp(temp):
-    r.set('set_temp', temp)
+    if is_valid_val(temp):
+        r.set('set_temp', temp)
+
 
 
 def get_temp():
@@ -31,7 +33,7 @@ def get_temp():
 
 
 def is_valid_val(temp):
-    if 65 <= temp <= 85:
+    if 65 <= temp <= 87:
         return True
     else:
         return False
