@@ -14,21 +14,22 @@ import Schedule
 from flask import Flask, render_template, request, jsonify
 import ScheduleContainer
 import Temp
+from threading import Thread
 
 app = Flask(__name__)
 
 schedule_queue = ScheduleContainer.ScheduleContainer()
 
-hvac = HVAC.HVAC()
 
+
+hvac = HVAC.HVAC()
+t = Thread(target=hvac.sensor_checker)
+t.start()
 
 def kill_threads():
     hvac._run = False
     schedule_queue._run = False
 
-
-def init():
-    config.set_temp_file()
 
 
 @app.route('/')
@@ -41,10 +42,10 @@ def index():
 def handle():
     if request.args.get('control', 0, type=str) == 'UP':
         print("UP ^^^^^^")
-        Temp.increment_temp(1)
+        Temp.increment_temp(1,hvac.temp_compare)
     if request.args.get('control', 0, type=str) == 'DOWN':
         print("DOWN ^^^^^^^")
-        Temp.increment_temp(-1)
+        Temp.increment_temp(-1, hvac.temp_compare)
     return jsonify(result=Temp.get_temp())
 
 
@@ -64,7 +65,5 @@ def schedule_process():
 
 
 if __name__ == "__main__":
-    init()
+    #pass
     app.run(threaded=True, host='0.0.0.0', port=8080)
-
-

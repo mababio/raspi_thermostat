@@ -3,7 +3,7 @@ author: Michael
 email: michaelkwasi@gmail.com
 website: ababio.me
 
-purpose: The Air Conditioner object is a representation of real world Furnace. 
+purpose: The Air Conditioner object is a representation of real world Furnace.
 
 '''
 
@@ -17,15 +17,14 @@ class AirConditioner():
         pass
 
     def on(self):
-        pass # print('ac turn on')
+        print('ac turn on')
         # turn AirConditioner on
         # cmd = self.air_conditioner_script_path + ' 1'
         # print(cmd)
         # Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
     def off(self):
-        pass
-        # print('ac turn off')
+        print('ac turn off')
         # turn AirConditioner off
         # cmd = self.air_conditioner_script_path + ' 0'
         # Popen(cmd, stdout=subprocess.PIPE, shell=True)
@@ -34,4 +33,3 @@ class AirConditioner():
 if __name__ == '__main__':
         obj = AirConditioner()
         obj.on()
-

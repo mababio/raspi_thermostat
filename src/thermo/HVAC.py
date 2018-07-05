@@ -26,10 +26,10 @@ class HVAC(object):
     ac = AirConditioner.AirConditioner()
     furnace = Furnace.Furnace()
 
-    def __init__(self):
+    def sensor_checker(self):
         event_handler = Current_temp_handler(self.temp_compare)
         observer = Observer()
-        observer.schedule(event_handler, path=config.sensor_path, recursive=False)
+        observer.schedule(event_handler, path="/Users/mababio/Desktop/projects/python/raspi_thermostat/src/thermo/data/thermo/", recursive=False)
         observer.start()
 
         try:
@@ -38,6 +38,7 @@ class HVAC(object):
         except KeyboardInterrupt:
             observer.stop()
         observer.join()
+
 
     def extract_temp(self, file_data):
         p = re.compile('[0-9]{2}')

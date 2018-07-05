@@ -16,9 +16,10 @@ r = redis.Redis(
     port=6379
     )
 
-def increment_temp( amount):
+def increment_temp( amount, funt):
     new_temp = get_temp() + amount
     change_temp(new_temp)
+    funt()
 
 
 def change_temp(temp):
