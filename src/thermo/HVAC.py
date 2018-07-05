@@ -1,5 +1,5 @@
-import Furnace
-import AirConditioner
+from hvac_stuff import Furnace, ac
+#iimport ac
 import re
 from threading import Thread
 from threading import Lock
@@ -23,7 +23,7 @@ by comparing the desire temp and the actual temp
 class HVAC(object):
 
     sensitivity = 2
-    ac = AirConditioner.AirConditioner()
+    ac = ac.AirConditioner()
     furnace = Furnace.Furnace()
 
     def sensor_checker(self):

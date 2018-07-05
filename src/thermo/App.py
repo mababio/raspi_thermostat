@@ -35,7 +35,7 @@ def kill_threads():
 @app.route('/')
 def index():
     temp = Temp.get_temp()
-    return render_template('index_b.html', temp=temp)
+    return render_template('index.html', temp=temp)
 
 
 @app.route('/handle', methods=['GET', 'POST'])
@@ -61,7 +61,7 @@ def schedule_process():
     temp = request.form.get('temp')
     schedule_queue.append(Schedule.ThermoSchedule(dow, time, temp))
     current_temp = Temp.get_temp()
-    return render_template('index_b.html', temp=current_temp)
+    return render_template('index.html', temp=current_temp)
 
 
 if __name__ == "__main__":

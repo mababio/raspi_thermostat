@@ -1,21 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_b.css') }}">
+    <script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+    <script src="{{ url_for('static', filename='js/cod.js') }}"></script>
 </head>
-<center>
-<label for="temp-sch">set temp time: </label>
-<input id="temp_time" type="time" name="appt-time" value="13:30">
-<label for="temp">set temp: </label>
-<input  type="text" name="temp_val" value="command">
-<input type="submit" id="submit_time" name="create_sch">
-<div >
-<button class="control" id="up" name="control" type="button">UP</button><br>
-<h1 style="font-size: 800%">{{ temp }}</h1><br>
-<button class="control"  id="down" name="control" type="button">DOWN</button><br>
+
+<div class="thermostat">
+  <div class="bar">
+    <div class="inner_bar"></div>
+    <div class='hold left'>
+      <div class='fill fill1'></div>
+    </div>
+    <div class='hold right'>
+      <div class='fill fill2'></div>
+    </div>
+    <span>Heating</span>
+  </div>
+  <div class="center">
+    <span class="arrow minus"><i class="material-icons">keyboard_arrow_left</i></span>
+    <span class="arrow plus"><i class="material-icons">keyboard_arrow_right</i></span>
+    <div class="small">
+      <span class="heat">{{ temp }}</span>
+    </div>
+  </div>
 </div>
-
-</center>
-
+</html>
