@@ -10,15 +10,13 @@ And also routes are configured here as well
 
 from config import config
 import HVAC
-import Schedule
 from flask import Flask, render_template, request, jsonify
-import ScheduleContainer
 import Temp
 from threading import Thread
+import sys
 
 app = Flask(__name__)
 
-schedule_queue = ScheduleContainer.ScheduleContainer()
 
 
 
@@ -57,9 +55,13 @@ def schedule():
 @app.route('/schedule_process', methods=['GET', 'POST'])
 def schedule_process():
     dow = request.form.get('dow')
-    time = request.form.get('time')
+    hour = request.form.get('hour')
+    minute = request.form.get('minute')
     temp = request.form.get('temp')
-    schedule_queue.append(Schedule.ThermoSchedule(dow, time, temp))
+
+    #print(dow + '   ' + ' ' +hour + '  ' + minute +' '+ temp)
+    #sys.exit(1)
+    Temp.activate_schedule(temp, hour, minute, dow)
     current_temp = Temp.get_temp()
     return render_template('index.html', temp=current_temp)
 
