@@ -57,13 +57,19 @@ class HVAC(object):
 
     #Turning on/off furnace or ac base on set and current temp
     def temp_compare(self):
-        if (Temp.get_temp() + HVAC.sensitivity) > self.get_sensor_temp():
+
+#        print('hello --------> ----> ')
+
+        if Temp.get_temp()  > self.get_sensor_temp():
+            #print('greater --->')
             HVAC.furnace.on()
             HVAC.ac.off()
-        elif (Temp.get_temp() + HVAC.sensitivity) < self.get_sensor_temp():
+        elif Temp.get_temp()  < self.get_sensor_temp():
+            #print('less --->')
             HVAC.ac.on()
             HVAC.furnace.off()
-        elif (Temp.get_temp() + HVAC.sensitivity) == self.get_sensor_temp():
+        elif Temp.get_temp() == self.get_sensor_temp():
+            #print('==== --->')
             HVAC.furnace.off()
             HVAC.ac.off()
         else:

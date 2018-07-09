@@ -7,7 +7,6 @@ purpose: This is the main method the thermostat flask application. All variables
 And also routes are configured here as well
 '''
 
-
 from config import config
 import HVAC
 from flask import Flask, render_template, request, jsonify
@@ -18,8 +17,6 @@ import sys
 app = Flask(__name__)
 
 
-
-
 hvac = HVAC.HVAC()
 t = Thread(target=hvac.sensor_checker)
 t.start()
@@ -27,7 +24,6 @@ t.start()
 def kill_threads():
     hvac._run = False
     schedule_queue._run = False
-
 
 
 @app.route('/')
@@ -58,14 +54,10 @@ def schedule_process():
     hour = request.form.get('hour')
     minute = request.form.get('minute')
     temp = request.form.get('temp')
-
-    #print(dow + '   ' + ' ' +hour + '  ' + minute +' '+ temp)
-    #sys.exit(1)
     Temp.activate_schedule(temp, hour, minute, dow)
     current_temp = Temp.get_temp()
     return render_template('index.html', temp=current_temp)
 
 
 if __name__ == "__main__":
-    #pass
     app.run(threaded=True, host='0.0.0.0', port=8080)
