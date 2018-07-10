@@ -19,7 +19,11 @@ Software:
 
 Installation procedure:
 
-1. Make sure you have python3 &  pip3 Installed
+1. Make sure you have the following installed:
+    - python3
+    - pip3
+    - redis
+2. `redis-server`    
 2. locate setup.py and run this:
     `python3 setup.py install`
 3. `python3 src/thermo/App.py`
