@@ -29,7 +29,7 @@ class Furnace():
     def on(self):
         if self.r.get('furnace').decode('utf-8') == 'off':
             print('furnace turn  on')
-            cmd = config.furnace_path + ' set 4 1'
+            cmd = config.furnace_path + ' set 17 1'
             #subprocess.call(shlex.split(cmd))
             self.r.set('furnace','on')
         else:
@@ -38,7 +38,7 @@ class Furnace():
     def off(self):
         if self.r.get('furnace').decode('utf-8') == 'on':
             print('furnace turn off')
-            ccmd = config.furnace_path + ' set 4 0'
+            ccmd = config.furnace_path + ' set 17 0'
             #subprocess.call(shlex.split(cmd))
             self.r.set('furnace','off')
         else:
