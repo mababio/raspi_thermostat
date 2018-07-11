@@ -1,4 +1,6 @@
 import json
+import sys
+sys.path.insert(0, 'src/thermo/config')
 from config import config
 import sys
 from crontab import CronTab
