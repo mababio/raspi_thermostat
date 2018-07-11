@@ -45,10 +45,11 @@ def change_temp(temp):
 
 
 def get_temp():
-    if r.exist('set_temp'):
+    if r.exists('set_temp'):
         return int(r.get('set_temp'))
     else:
         r.set('set_temp', 65)
+        return int(r.get('set_temp'))
 
 
 def save(key,value):

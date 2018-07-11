@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 version = '.1'
 
-install_requires = ['flask', 'schedule', 'pyyaml', 'singleton-decorator','redis', 'watchdog', 'crontab']
+install_requires = ['flask', 'schedule', 'pyyaml', 'singleton-decorator','redis', 'watchdog', 'python-crontab']
 
 
 setup(name='thermo',
