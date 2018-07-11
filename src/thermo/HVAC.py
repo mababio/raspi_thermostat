@@ -29,7 +29,7 @@ class HVAC(object):
     def sensor_checker(self):
         event_handler = Current_temp_handler(self.temp_compare)
         observer = Observer()
-        observer.schedule(event_handler, path="/home/mababio/raspi_thermostat/src/thermo/data/thermo/", recursive=False)
+        observer.schedule(event_handler, path="data/thermo/", recursive=False)
         observer.start()
 
         try:
