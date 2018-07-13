@@ -1,14 +1,3 @@
-from hvac_stuff import Furnace, ac
-#iimport ac
-import re
-from threading import Thread
-from threading import Lock
-import Temp as Temp
-from config import config
-import time
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-
 '''
 author: Michael
 email: michaelkwasi@gmail.com
@@ -20,6 +9,17 @@ by comparing the desire temp and the actual temp
 
 '''
 
+from hvac_stuff import Furnace, ac
+import re
+from threading import Thread
+from threading import Lock
+import Temp as Temp
+from config import config
+import time
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
+
 class HVAC(object):
 
     sensitivity = 2
@@ -27,7 +27,7 @@ class HVAC(object):
     furnace = Furnace.Furnace()
 
     def sensor_checker(self):
-        event_handler = Current_temp_handler(self.temp_compare)
+        event_handler = Current_temp_handler(self.push_sensor_temp)
         observer = Observer()
         observer.schedule(event_handler, path="data/thermo/", recursive=False)
         observer.start()
@@ -39,6 +39,9 @@ class HVAC(object):
             observer.stop()
         observer.join()
 
+    # push sensor temp to remote redis db    
+    def push_sensor_temp(self):
+        pass
 
     def extract_temp(self, file_data):
         p = re.compile('[0-9]{2}')
@@ -54,26 +57,6 @@ class HVAC(object):
             print('file in use!!!!!')
             self.get_sensor_temp()
         return int(sensor_temp)
-
-    #Turning on/off furnace or ac base on set and current temp
-    def temp_compare(self):
-
-#        print('hello --------> ----> ')
-
-        if Temp.get_temp()  > self.get_sensor_temp():
-            #print('greater --->')
-            HVAC.furnace.on()
-            HVAC.ac.off()
-        elif Temp.get_temp()  < self.get_sensor_temp():
-            #print('less --->')
-            HVAC.ac.on()
-            HVAC.furnace.off()
-        elif Temp.get_temp() == self.get_sensor_temp():
-            #print('==== --->')
-            HVAC.furnace.off()
-            HVAC.ac.off()
-        else:
-            print('forgot about this corner case')
 
 class Current_temp_handler(FileSystemEventHandler):
 
