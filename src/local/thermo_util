@@ -1,0 +1,26 @@
+
+
+def extract_temp(self, file_data):
+        p = re.compile('[0-9]{2}')
+        temp = p.findall(file_data)[0]
+        return temp
+
+
+def get_sensor_temp(self):
+    try:
+        with open(config.sensor_path) as file:
+        file_data = file.read()
+        sensor_temp = self.extract_temp(file_data)
+    except FileExistsError:
+        print('file in use!!!!!')
+        self.get_sensor_temp()
+   return int(sensor_temp)
+		
+	
+# push sensor temp to remote redis db    
+def push_sensor_temp(self):
+        pass
+		
+#put safe guard logic 		
+def get_redis_val():
+	pass
