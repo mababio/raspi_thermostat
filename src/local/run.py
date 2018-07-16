@@ -9,11 +9,15 @@ purpose: main method to run  hardware local processes.
 
 from hvac_stuff import Furnace, ac
 import asycio
+import sensor_watcher
 
 
 def check furnace_ac():
     ac_local = None
     furnace_local =None
+    # run a loop checking sensor file
+    sensor_watcher.run()
+    
    while True:
     furnace_local = switch_logic(Furnace,Furnace_local,'furnace')
     ac_local = switch_logic(ac,ac_local,'ac')
