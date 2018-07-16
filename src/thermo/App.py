@@ -2,28 +2,16 @@
 author: Michael
 email: michaelkwasi@gmail.com
 website: ababio.me
-
 purpose: This is the main method the thermostat flask application. All variables that need to be set are declared here
 And also routes are configured here as well
 '''
 
-from config import config
-import HVAC
 from flask import Flask, render_template, request, jsonify
 import Temp
 from threading import Thread
 import sys
 
 app = Flask(__name__)
-
-
-hvac = HVAC.HVAC()
-t = Thread(target=hvac.sensor_checker)
-t.start()
-
-def kill_threads():
-    hvac._run = False
-    schedule_queue._run = False
 
 
 @app.route('/')
