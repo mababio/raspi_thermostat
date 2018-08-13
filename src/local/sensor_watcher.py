@@ -4,7 +4,8 @@ email: michaelkwasi@gmail.com
 website: ababio.me
 purpose: Whenever sensor temp changes push to remote redis DB
 '''
-
+import sys
+sys.path.insert(0, '../lib')
 import thermo_util
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
