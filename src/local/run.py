@@ -2,9 +2,7 @@
 author: Michael
 email: michaelkwasi@gmail.com
 website: ababio.me
-
 purpose: main method to run  hardware local processes.
-
 '''
 
 from hvac_stuff import Furnace, ac
